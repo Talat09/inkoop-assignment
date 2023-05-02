@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Number Input Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="input-items">
+      <!-- <label id="lebel" for="numberInput">Enter a number:</label> -->
+      <p id="lebel">Enter A Number</p>
+      <input
+        onkeyup="handleNumberInput()"
+        type="number"
+        id="numberInput"
+        name="numberInput"
+        placeholder="Enter a number"
+      />
+      <!-- <button onclick="handleNumberInput()">Submit</button> -->
+    </section>
+    <div id="output">Output:</div>
+    <script>
+      function handleNumberInput() {
+        const numberInput = document.getElementById("numberInput").value;
+
+        if (numberInput < 0) {
+          document.getElementById("output").innerHTML =
+            "enter a positive value";
+        } else if (numberInput % 2 === 0) {
+          const evenNumbers = [];
+          let currentNumber = parseInt(numberInput) + 2;
+          for (let i = 0; i < 3; i++) {
+            evenNumbers.push(currentNumber);
+            currentNumber += 2;
+          }
+          document.getElementById("output").innerHTML =
+            "Next 3 even numbers: " + evenNumbers.join(", ");
+        } else {
+          const oddNumbers = [];
+          let currentNumber = parseInt(numberInput) + 2;
+          for (let i = 0; i < 3; i++) {
+            oddNumbers.push(currentNumber);
+            currentNumber += 2;
+          }
+          document.getElementById("output").innerHTML =
+            "Next 3 odd numbers: " + oddNumbers.join(", ");
+        }
+      }
+    </script>
+  </body>
+</html>
